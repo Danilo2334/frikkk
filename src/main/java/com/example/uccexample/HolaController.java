@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HolaController {
 
-    
-    @GetMapping("/")
-    public String hol() {
-        return this.uccAssistant.chat();
+    @GetMapping("/hola")
+    public String hola() {
+        return "Hola desde UCC Example";
     }
 }
