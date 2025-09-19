@@ -1,4 +1,4 @@
-package com.example.uccexample.infraestructure.model;
+package com.example.uccexample.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

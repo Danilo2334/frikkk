@@ -1,4 +1,4 @@
-package com.example.uccexample.infraestructure.model;
+package com.example.uccexample.model;
 
 import com.example.uccexample.infraestructure.enums.EstadoPedido;
 import jakarta.persistence.*;
