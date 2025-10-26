@@ -1,22 +1,21 @@
-package com.example.uccexample.service.impl;
+package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.ClienteDTO;
-import com.example.uccexample.infraestructure.crud.ClienteRepository;
+import com.example.uccexample.domain.irepository.IClienteRepository;
+import com.example.uccexample.domain.service.ClienteService;
 import com.example.uccexample.infraestructure.mapper.ClienteMapper;
 import com.example.uccexample.model.Cliente;
-import com.example.uccexample.service.ClienteService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    private final ClienteRepository repo;
+    private final IClienteRepository repo;
 
-    public ClienteServiceImpl(ClienteRepository repo) {
+    public ClienteServiceImpl(IClienteRepository repo) {
         this.repo = repo;
     }
 
@@ -44,10 +43,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDTO update(Long id, ClienteDTO dto) {
         Optional<Cliente> opt = repo.findById(id);
-        if (!opt.isPresent()) return null;
+        if (!opt.isPresent()) {
+            return null;
+        }
 
         Cliente entity = opt.get();
-        // Actualiza SOLO los campos permitidos
         entity.setNombre(dto.getNombre());
         entity.setTelefono(dto.getTelefono());
         entity.setEmail(dto.getEmail());

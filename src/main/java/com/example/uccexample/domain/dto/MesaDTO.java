@@ -1,24 +1,19 @@
-package com.example.uccexample.model;
+package com.example.uccexample.domain.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "mesas")
-public class Mesa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MesaDTO {
     private Long id;
-
-    @Column(nullable = false, unique = true)
     private Integer numero;
-
-    @Column(nullable = false)
     private Integer capacidad;
-
-    @Column(length = 30)
     private String zona;
 
-    public Mesa() {}
+    public MesaDTO() {}
+
+    public MesaDTO(Long id, Integer numero, Integer capacidad, String zona) {
+        this.id = id;
+        this.numero = numero;
+        this.capacidad = capacidad;
+        this.zona = zona;
+    }
 
     public Long getId() {
         return id;

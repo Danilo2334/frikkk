@@ -1,4 +1,4 @@
-package com.example.uccexample.service;
+package com.example.uccexample.domain.service;
 
 import com.example.uccexample.domain.dto.ClienteDTO;
 import java.util.List;
