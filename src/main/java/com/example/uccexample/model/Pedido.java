@@ -4,6 +4,7 @@ import com.example.uccexample.infraestructure.enums.EstadoPedido;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,78 @@ public class Pedido {
     private BigDecimal total = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PedidoItem> items;
+    private List<PedidoItem> items = new ArrayList<>();
 
-    // getters y setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+
+    public EstadoPedido getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPedido estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getCreadoEn() {
+        return creadoEn;
+    }
+
+    public void setCreadoEn(LocalDateTime creadoEn) {
+        this.creadoEn = creadoEn;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public List<PedidoItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<PedidoItem> items) {
+        this.items = items;
+    }
+
+    /** Mantiene la relacion bidireccional al agregar un item. */
+    public void addItem(PedidoItem item) {
+        if (item == null) {
+            return;
+        }
+        items.add(item);
+        item.setPedido(this);
+    }
+
+    public void removeItem(PedidoItem item) {
+        if (item == null) {
+            return;
+        }
+        items.remove(item);
+        item.setPedido(null);
+    }
 }

@@ -1,32 +1,26 @@
-package com.example.uccexample.model;
+package com.example.uccexample.domain.dto;
 
 import com.example.uccexample.infraestructure.enums.EstadoReserva;
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "reservas")
-public class Reserva {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReservaDTO {
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mesa_id")
-    private Mesa mesa;
-
-    @Column(nullable = false)
+    private Long clienteId;
+    private Long mesaId;
     private LocalDateTime fechaHora;
-
-    @Column(nullable = false)
     private Integer personas;
+    private EstadoReserva estado;
 
-    @Enumerated(EnumType.STRING)
-    private EstadoReserva estado = EstadoReserva.PENDIENTE;
+    public ReservaDTO() {}
+
+    public ReservaDTO(Long id, Long clienteId, Long mesaId, LocalDateTime fechaHora, Integer personas, EstadoReserva estado) {
+        this.id = id;
+        this.clienteId = clienteId;
+        this.mesaId = mesaId;
+        this.fechaHora = fechaHora;
+        this.personas = personas;
+        this.estado = estado;
+    }
 
     public Long getId() {
         return id;
@@ -36,20 +30,20 @@ public class Reserva {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Long getClienteId() {
+        return clienteId;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 
-    public Mesa getMesa() {
-        return mesa;
+    public Long getMesaId() {
+        return mesaId;
     }
 
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
+    public void setMesaId(Long mesaId) {
+        this.mesaId = mesaId;
     }
 
     public LocalDateTime getFechaHora() {

@@ -1,26 +1,23 @@
-package com.example.uccexample.model;
+package com.example.uccexample.domain.dto;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "productos")
-public class Producto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductoDTO {
     private Long id;
-
-    @Column(nullable = false, length = 120, unique = true)
     private String nombre;
-
-    @Column(length = 255)
     private String descripcion;
-
-    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
+    private Boolean activo;
 
-    @Column(nullable = false)
-    private Boolean activo = true;
+    public ProductoDTO() {}
+
+    public ProductoDTO(Long id, String nombre, String descripcion, BigDecimal precio, Boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.activo = activo;
+    }
 
     public Long getId() {
         return id;

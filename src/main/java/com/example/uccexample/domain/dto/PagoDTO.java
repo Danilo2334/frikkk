@@ -1,33 +1,28 @@
-package com.example.uccexample.model;
+package com.example.uccexample.domain.dto;
 
 import com.example.uccexample.infraestructure.enums.EstadoPago;
 import com.example.uccexample.infraestructure.enums.MetodoPago;
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "pagos")
-public class Pago {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PagoDTO {
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
-
-    @Enumerated(EnumType.STRING)
+    private Long pedidoId;
     private MetodoPago metodo;
-
-    @Enumerated(EnumType.STRING)
-    private EstadoPago estado = EstadoPago.PENDIENTE;
-
-    @Column(nullable = false, precision = 12, scale = 2)
+    private EstadoPago estado;
     private BigDecimal monto;
+    private LocalDateTime pagadoEn;
 
-    @Column(nullable = false)
-    private LocalDateTime pagadoEn = LocalDateTime.now();
+    public PagoDTO() {}
+
+    public PagoDTO(Long id, Long pedidoId, MetodoPago metodo, EstadoPago estado, BigDecimal monto, LocalDateTime pagadoEn) {
+        this.id = id;
+        this.pedidoId = pedidoId;
+        this.metodo = metodo;
+        this.estado = estado;
+        this.monto = monto;
+        this.pagadoEn = pagadoEn;
+    }
 
     public Long getId() {
         return id;
@@ -37,12 +32,12 @@ public class Pago {
         this.id = id;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Long getPedidoId() {
+        return pedidoId;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
     public MetodoPago getMetodo() {
