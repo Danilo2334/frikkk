@@ -4,8 +4,6 @@ import com.example.uccexample.infraestructure.enums.EstadoPedido;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
@@ -30,9 +28,6 @@ public class Pedido {
 
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal total = BigDecimal.ZERO;
-
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PedidoItem> items = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -82,28 +77,4 @@ public class Pedido {
         this.total = total;
     }
 
-    public List<PedidoItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<PedidoItem> items) {
-        this.items = items;
-    }
-
-    /** Mantiene la relacion bidireccional al agregar un item. */
-    public void addItem(PedidoItem item) {
-        if (item == null) {
-            return;
-        }
-        items.add(item);
-        item.setPedido(this);
-    }
-
-    public void removeItem(PedidoItem item) {
-        if (item == null) {
-            return;
-        }
-        items.remove(item);
-        item.setPedido(null);
-    }
 }

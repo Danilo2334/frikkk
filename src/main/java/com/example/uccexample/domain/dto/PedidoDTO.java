@@ -3,8 +3,6 @@ package com.example.uccexample.domain.dto;
 import com.example.uccexample.infraestructure.enums.EstadoPedido;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PedidoDTO {
     private Long id;
@@ -13,20 +11,16 @@ public class PedidoDTO {
     private EstadoPedido estado;
     private LocalDateTime creadoEn;
     private BigDecimal total;
-    private List<PedidoItemDTO> items = new ArrayList<>();
 
     public PedidoDTO() {}
 
-    public PedidoDTO(Long id, Long clienteId, Long mesaId, EstadoPedido estado, LocalDateTime creadoEn, BigDecimal total, List<PedidoItemDTO> items) {
+    public PedidoDTO(Long id, Long clienteId, Long mesaId, EstadoPedido estado, LocalDateTime creadoEn, BigDecimal total) {
         this.id = id;
         this.clienteId = clienteId;
         this.mesaId = mesaId;
         this.estado = estado;
         this.creadoEn = creadoEn;
         this.total = total;
-        if (items != null) {
-            this.items = items;
-        }
     }
 
     public Long getId() {
@@ -77,11 +71,4 @@ public class PedidoDTO {
         this.total = total;
     }
 
-    public List<PedidoItemDTO> getItems() {
-        return items;
-    }
-
-    public void setItems(List<PedidoItemDTO> items) {
-        this.items = items != null ? items : new ArrayList<>();
-    }
 }

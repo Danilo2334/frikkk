@@ -1,14 +1,9 @@
 package com.example.uccexample.infraestructure.mapper;
 
 import com.example.uccexample.domain.dto.PedidoDTO;
-import com.example.uccexample.domain.dto.PedidoItemDTO;
 import com.example.uccexample.model.Cliente;
 import com.example.uccexample.model.Mesa;
 import com.example.uccexample.model.Pedido;
-import com.example.uccexample.model.PedidoItem;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class PedidoMapper {
 
@@ -23,14 +18,6 @@ public class PedidoMapper {
         dto.setEstado(entity.getEstado());
         dto.setCreadoEn(entity.getCreadoEn());
         dto.setTotal(entity.getTotal());
-        List<PedidoItem> items = entity.getItems();
-        if (items == null || items.isEmpty()) {
-            dto.setItems(Collections.emptyList());
-        } else {
-            dto.setItems(items.stream()
-                    .map(PedidoItemMapper::toDTO)
-                    .collect(Collectors.toList()));
-        }
         return dto;
     }
 
@@ -67,14 +54,6 @@ public class PedidoMapper {
 
         if (dto.getTotal() != null) {
             pedido.setTotal(dto.getTotal());
-        }
-
-        pedido.getItems().clear();
-        if (dto.getItems() != null) {
-            for (PedidoItemDTO itemDTO : dto.getItems()) {
-                PedidoItem item = PedidoItemMapper.toEntity(itemDTO);
-                pedido.addItem(item);
-            }
         }
 
         return pedido;

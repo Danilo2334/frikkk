@@ -1,15 +1,12 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.PedidoDTO;
-import com.example.uccexample.domain.dto.PedidoItemDTO;
 import com.example.uccexample.domain.irepository.IPedidoRepository;
 import com.example.uccexample.domain.service.PedidoService;
-import com.example.uccexample.infraestructure.mapper.PedidoItemMapper;
 import com.example.uccexample.infraestructure.mapper.PedidoMapper;
 import com.example.uccexample.model.Cliente;
 import com.example.uccexample.model.Mesa;
 import com.example.uccexample.model.Pedido;
-import com.example.uccexample.model.PedidoItem;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -80,14 +77,6 @@ public class PedidoServiceImpl implements PedidoService {
 
         if (dto.getTotal() != null) {
             entity.setTotal(dto.getTotal());
-        }
-
-        entity.getItems().clear();
-        if (dto.getItems() != null) {
-            for (PedidoItemDTO itemDTO : dto.getItems()) {
-                PedidoItem item = PedidoItemMapper.toEntity(itemDTO);
-                entity.addItem(item);
-            }
         }
 
         Pedido updated = repository.save(entity);
