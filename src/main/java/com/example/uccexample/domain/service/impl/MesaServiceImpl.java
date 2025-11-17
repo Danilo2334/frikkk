@@ -1,10 +1,10 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.MesaDTO;
-import com.example.uccexample.domain.irepository.IMesaRepository;
 import com.example.uccexample.domain.service.MesaService;
 import com.example.uccexample.infraestructure.mapper.MesaMapper;
 import com.example.uccexample.model.Mesa;
+import com.example.uccexample.repository.MesaRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class MesaServiceImpl implements MesaService {
 
-    private final IMesaRepository repository;
+    private final MesaRepository repository;
 
-    public MesaServiceImpl(IMesaRepository repository) {
+    public MesaServiceImpl(MesaRepository repository) {
         this.repository = repository;
     }
 

@@ -12,16 +12,20 @@ public class PagoDTO {
     private EstadoPago estado;
     private BigDecimal monto;
     private LocalDateTime pagadoEn;
+    private String pedidoClienteNombre;
+    private BigDecimal pedidoTotal;
 
     public PagoDTO() {}
 
-    public PagoDTO(Long id, Long pedidoId, MetodoPago metodo, EstadoPago estado, BigDecimal monto, LocalDateTime pagadoEn) {
+    public PagoDTO(Long id, Long pedidoId, MetodoPago metodo, EstadoPago estado, BigDecimal monto, LocalDateTime pagadoEn, String pedidoClienteNombre, BigDecimal pedidoTotal) {
         this.id = id;
         this.pedidoId = pedidoId;
         this.metodo = metodo;
         this.estado = estado;
         this.monto = monto;
         this.pagadoEn = pagadoEn;
+        this.pedidoClienteNombre = pedidoClienteNombre;
+        this.pedidoTotal = pedidoTotal;
     }
 
     public Long getId() {
@@ -70,5 +74,21 @@ public class PagoDTO {
 
     public void setPagadoEn(LocalDateTime pagadoEn) {
         this.pagadoEn = pagadoEn;
+    }
+
+    public String getPedidoClienteNombre() {
+        return pedidoClienteNombre;
+    }
+
+    public void setPedidoClienteNombre(String pedidoClienteNombre) {
+        this.pedidoClienteNombre = pedidoClienteNombre;
+    }
+
+    public BigDecimal getPedidoTotal() {
+        return pedidoTotal;
+    }
+
+    public void setPedidoTotal(BigDecimal pedidoTotal) {
+        this.pedidoTotal = pedidoTotal;
     }
 }

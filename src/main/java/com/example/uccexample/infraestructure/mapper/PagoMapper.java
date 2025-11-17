@@ -12,7 +12,15 @@ public class PagoMapper {
         }
         PagoDTO dto = new PagoDTO();
         dto.setId(entity.getId());
-        dto.setPedidoId(entity.getPedido() != null ? entity.getPedido().getId() : null);
+        if (entity.getPedido() != null) {
+            dto.setPedidoId(entity.getPedido().getId());
+            dto.setPedidoClienteNombre(entity.getPedido().getCliente() != null ? entity.getPedido().getCliente().getNombre() : null);
+            dto.setPedidoTotal(entity.getPedido().getTotal());
+        } else {
+            dto.setPedidoId(null);
+            dto.setPedidoClienteNombre(null);
+            dto.setPedidoTotal(null);
+        }
         dto.setMetodo(entity.getMetodo());
         dto.setEstado(entity.getEstado());
         dto.setMonto(entity.getMonto());

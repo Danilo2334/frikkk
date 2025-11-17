@@ -14,6 +14,7 @@ public class PedidoMapper {
         PedidoDTO dto = new PedidoDTO();
         dto.setId(entity.getId());
         dto.setClienteId(entity.getCliente() != null ? entity.getCliente().getId() : null);
+        dto.setClienteNombre(entity.getCliente() != null ? entity.getCliente().getNombre() : null);
         dto.setMesaId(entity.getMesa() != null ? entity.getMesa().getId() : null);
         dto.setEstado(entity.getEstado());
         dto.setCreadoEn(entity.getCreadoEn());

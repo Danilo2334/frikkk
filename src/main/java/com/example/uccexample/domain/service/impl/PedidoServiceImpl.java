@@ -1,12 +1,12 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.PedidoDTO;
-import com.example.uccexample.domain.irepository.IPedidoRepository;
 import com.example.uccexample.domain.service.PedidoService;
 import com.example.uccexample.infraestructure.mapper.PedidoMapper;
 import com.example.uccexample.model.Cliente;
 import com.example.uccexample.model.Mesa;
 import com.example.uccexample.model.Pedido;
+import com.example.uccexample.repository.PedidoRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PedidoServiceImpl implements PedidoService {
 
-    private final IPedidoRepository repository;
+    private final PedidoRepository repository;
 
-    public PedidoServiceImpl(IPedidoRepository repository) {
+    public PedidoServiceImpl(PedidoRepository repository) {
         this.repository = repository;
     }
 

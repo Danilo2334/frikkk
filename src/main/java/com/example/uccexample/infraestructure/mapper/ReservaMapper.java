@@ -13,8 +13,20 @@ public class ReservaMapper {
         }
         ReservaDTO dto = new ReservaDTO();
         dto.setId(entity.getId());
-        dto.setClienteId(entity.getCliente() != null ? entity.getCliente().getId() : null);
-        dto.setMesaId(entity.getMesa() != null ? entity.getMesa().getId() : null);
+        if (entity.getCliente() != null) {
+            dto.setClienteId(entity.getCliente().getId());
+            dto.setClienteNombre(entity.getCliente().getNombre());
+        } else {
+            dto.setClienteId(null);
+            dto.setClienteNombre(null);
+        }
+        if (entity.getMesa() != null) {
+            dto.setMesaId(entity.getMesa().getId());
+            dto.setMesaNumero(entity.getMesa().getNumero());
+        } else {
+            dto.setMesaId(null);
+            dto.setMesaNumero(null);
+        }
         dto.setFechaHora(entity.getFechaHora());
         dto.setPersonas(entity.getPersonas());
         dto.setEstado(entity.getEstado());

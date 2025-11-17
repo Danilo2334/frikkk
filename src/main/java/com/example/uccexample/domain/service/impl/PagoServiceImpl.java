@@ -1,11 +1,11 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.PagoDTO;
-import com.example.uccexample.domain.irepository.IPagoRepository;
 import com.example.uccexample.domain.service.PagoService;
 import com.example.uccexample.infraestructure.mapper.PagoMapper;
 import com.example.uccexample.model.Pago;
 import com.example.uccexample.model.Pedido;
+import com.example.uccexample.repository.PagoRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PagoServiceImpl implements PagoService {
 
-    private final IPagoRepository repository;
+    private final PagoRepository repository;
 
-    public PagoServiceImpl(IPagoRepository repository) {
+    public PagoServiceImpl(PagoRepository repository) {
         this.repository = repository;
     }
 

@@ -7,16 +7,28 @@ public class ReservaDTO {
     private Long id;
     private Long clienteId;
     private Long mesaId;
+    private String clienteNombre;
+    private Integer mesaNumero;
     private LocalDateTime fechaHora;
     private Integer personas;
     private EstadoReserva estado;
 
     public ReservaDTO() {}
 
-    public ReservaDTO(Long id, Long clienteId, Long mesaId, LocalDateTime fechaHora, Integer personas, EstadoReserva estado) {
+    public ReservaDTO(
+            Long id,
+            Long clienteId,
+            Long mesaId,
+            String clienteNombre,
+            Integer mesaNumero,
+            LocalDateTime fechaHora,
+            Integer personas,
+            EstadoReserva estado) {
         this.id = id;
         this.clienteId = clienteId;
         this.mesaId = mesaId;
+        this.clienteNombre = clienteNombre;
+        this.mesaNumero = mesaNumero;
         this.fechaHora = fechaHora;
         this.personas = personas;
         this.estado = estado;
@@ -44,6 +56,22 @@ public class ReservaDTO {
 
     public void setMesaId(Long mesaId) {
         this.mesaId = mesaId;
+    }
+
+    public String getClienteNombre() {
+        return clienteNombre;
+    }
+
+    public void setClienteNombre(String clienteNombre) {
+        this.clienteNombre = clienteNombre;
+    }
+
+    public Integer getMesaNumero() {
+        return mesaNumero;
+    }
+
+    public void setMesaNumero(Integer mesaNumero) {
+        this.mesaNumero = mesaNumero;
     }
 
     public LocalDateTime getFechaHora() {

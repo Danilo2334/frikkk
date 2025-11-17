@@ -1,10 +1,10 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.ProductoDTO;
-import com.example.uccexample.domain.irepository.IProductoRepository;
 import com.example.uccexample.domain.service.ProductoService;
 import com.example.uccexample.infraestructure.mapper.ProductoMapper;
 import com.example.uccexample.model.Producto;
+import com.example.uccexample.repository.ProductoRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    private final IProductoRepository repository;
+    private final ProductoRepository repository;
 
-    public ProductoServiceImpl(IProductoRepository repository) {
+    public ProductoServiceImpl(ProductoRepository repository) {
         this.repository = repository;
     }
 

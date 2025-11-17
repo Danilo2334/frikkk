@@ -1,12 +1,12 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.ReservaDTO;
-import com.example.uccexample.domain.irepository.IReservaRepository;
 import com.example.uccexample.domain.service.ReservaService;
 import com.example.uccexample.infraestructure.mapper.ReservaMapper;
 import com.example.uccexample.model.Cliente;
 import com.example.uccexample.model.Mesa;
 import com.example.uccexample.model.Reserva;
+import com.example.uccexample.repository.ReservaRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReservaServiceImpl implements ReservaService {
 
-    private final IReservaRepository repository;
+    private final ReservaRepository repository;
 
-    public ReservaServiceImpl(IReservaRepository repository) {
+    public ReservaServiceImpl(ReservaRepository repository) {
         this.repository = repository;
     }
 

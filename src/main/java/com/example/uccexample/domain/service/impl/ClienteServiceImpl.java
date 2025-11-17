@@ -1,10 +1,10 @@
 package com.example.uccexample.domain.service.impl;
 
 import com.example.uccexample.domain.dto.ClienteDTO;
-import com.example.uccexample.domain.irepository.IClienteRepository;
 import com.example.uccexample.domain.service.ClienteService;
 import com.example.uccexample.infraestructure.mapper.ClienteMapper;
 import com.example.uccexample.model.Cliente;
+import com.example.uccexample.repository.ClienteRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    private final IClienteRepository repo;
+    private final ClienteRepository repo;
 
-    public ClienteServiceImpl(IClienteRepository repo) {
+    public ClienteServiceImpl(ClienteRepository repo) {
         this.repo = repo;
     }
 
